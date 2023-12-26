@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:bmi_calculator/viewpage.dart';
 import 'package:flutter/material.dart';
 import 'package:gender_picker/gender_picker.dart';
@@ -21,10 +20,10 @@ String agecal='0';
 String heightcal='0';
 String weightcal='0';
 double result=0;
-String showing='0';
+String showing='';
 String condition='0';
-String gender="0";
-
+String gender="Not choose";
+Color choosecolor=const Color.fromARGB(255, 7, 34, 56);
 
 
 
@@ -351,15 +350,9 @@ body:Center(
   
   decoration:InputDecoration(
   
+  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12)),
+  enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12) )
   
-  
-  
-  
-  
-  
-  
-  
-  border:OutlineInputBorder()
   
   ) ,
   
@@ -405,7 +398,9 @@ body:Center(
   
   decoration: InputDecoration(
   
-  border: OutlineInputBorder()
+  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12)),
+  enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12) )
+  
   
   ),
   
@@ -454,24 +449,8 @@ body:Center(
   textAlign: TextAlign.center,
   
   decoration: InputDecoration(
-  
-  border: OutlineInputBorder(
-  
-  
-  
-  
-  
-  
-  
-  )
-  
-  
-  
-  
-  
-  
-  
-  
+     focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12)),
+  enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.grey.shade300,),borderRadius: BorderRadius.circular(12) )
   
   ),
   
@@ -639,8 +618,7 @@ body:Center(
   
     
   
-  return viewpage(agecal,heightcal,weightcal,result,showing,condition,gender);
-  
+  return viewpage(gender: gender, choosecolor: choosecolor, agecal: agecal, heightcal: heightcal, weightcal: weightcal, result: result, showing: showing, condition: condition,);
   
   
   },));
@@ -834,7 +812,8 @@ body:Center(
 
 
   void calculation(heightcal,weightcal){
-
+ 
+ 
 
 
 result=weightcal/((heightcal*heightcal)/10000);
@@ -844,17 +823,20 @@ if(result<18.5){
 
 showing="You are in underweight";
 condition="Underweight";
+choosecolor=Color.fromARGB(255, 74, 232, 6);
 
 }else if(22.9>=result && result>=18.5){
 
 
 showing="You are in Normal rang";
 condition="Normal";
+choosecolor=Color.fromARGB(255, 8, 139, 1);
 
 }else if(23<=result && result<=24.9){
 
 showing="You are in Over Weight !";
 condition="Over Weight";
+choosecolor=const Color.fromARGB(255, 74, 0, 0);
 
 }
 
@@ -862,12 +844,13 @@ else if(25<=result && result<=29.9){
 
 showing="You are in Obese 1 !!";
 condition='Obese 1';
+choosecolor=const Color.fromARGB(255, 168, 0, 0);
 
 }else if(30<=result){
 
 showing="You are in Obese 2 !!!";
 condition='Obese 2';
-
+choosecolor=const Color.fromARGB(255, 255, 0, 0);
 
 
 }

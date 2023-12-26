@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:bmi_calculator/firstpage.dart';
 import 'package:flutter/material.dart';
@@ -10,22 +9,27 @@ class viewpage extends StatelessWidget {
 dynamic heightcal;
 dynamic weightcal;
 double result;
-dynamic showing;
+String showing;
   String condition;
   String gender;
+  Color choosecolor;
   
 
 
         
    viewpage(
-this.agecal,
-this.heightcal,
-this.weightcal,
-this.result,
-  this.showing,  
-  this.condition,
-    this.gender,
-    {super.key});
+   { 
+    
+   required this.choosecolor,
+required this.agecal,
+ required this.heightcal,
+required  this.weightcal,
+ required  this.result,
+   required  this.showing,  
+  required this.condition,
+   required   this.gender,
+
+    super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +87,7 @@ body: SingleChildScrollView(
   radius: 180,
   lineWidth: 20,
   percent: result/100,
-  progressColor: const Color.fromARGB(255, 7, 34, 56),
+  progressColor: choosecolor,
   backgroundColor:Color.fromARGB(21, 108, 144, 174),
   
   circularStrokeCap: CircularStrokeCap.round,
@@ -101,10 +105,10 @@ children: [
   width:194,
   child: Center(child: SingleChildScrollView(
   scrollDirection: Axis.horizontal,
-  child: Text("$result",style: TextStyle(fontWeight:FontWeight.bold,color:const Color.fromARGB(255, 11, 75, 14),fontSize: 98),))),
+  child: Text("$result",style: TextStyle(fontWeight:FontWeight.bold,color:choosecolor,fontSize: 98),))),
   ),SizedBox(height: 15,),
   Container(
-  child: Center(child: Text(condition,style: TextStyle(fontWeight:FontWeight.bold,color:const Color.fromARGB(255, 11, 75, 14),fontSize: 29),)),
+  child: Center(child: Text(condition,style: TextStyle(fontWeight:FontWeight.bold,color:choosecolor,fontSize: 29),)),
   ),
 
 
@@ -530,7 +534,7 @@ children: [
   
   
   
-  child: Center(child: Text(showing,style: TextStyle(fontSize: 17,color: Color.fromARGB(255, 111, 4, 4),fontWeight: FontWeight.bold),)),
+  child: Center(child: Text(showing,style: TextStyle(fontSize: 17,color:choosecolor,fontWeight: FontWeight.bold),)),
   
   
   
